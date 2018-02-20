@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alin.dal.UserTwitterLikeDal">
+
+    <!--<select id="findAll" resultType="com.alin.model.Twitter">-->
+        <!--SELECT * FROM twitter limit 100-->
+    <!--</select>-->
+
+    <!--<update id="updateLikes" >-->
+        <!--update twitter set likes = #{likeNum} where id = #{id} limit =1-->
+    <!--</update>-->
+
+    <insert id="insert" parameterType="com.alin.model.UserTwitterLike">
+        INSERT INTO user_twitter_like
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="userId != null ">userId,</if>
+            <if test="twitterId != null ">twitterId,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="userId != null">#{userId},</if>
+            <if test="twitterId != null">#{twitterId},</if>
+        </trim>
+    </insert>
+
+</mapper>
